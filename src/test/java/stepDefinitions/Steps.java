@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import junit.framework.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.LoginPage;
 
 public class Steps {
@@ -14,15 +15,14 @@ public class Steps {
     public WebDriver driver;
     public LoginPage lp;
 
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"Drivers/chromedriver");
-        driver = new ChromeDriver();
-    }
     @Given("User launch the chrome browser")
     public void user_launch_the_chrome_browser() {
-        System.setProperty("web-driver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver");
-        driver = new ChromeDriver();
+//        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver");
+//        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("−−incognito");
+        driver = new ChromeDriver(options);
         lp = new LoginPage(driver);
 
     }
