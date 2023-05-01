@@ -22,6 +22,7 @@ public class Steps {
     public void user_launch_the_chrome_browser() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("−−incognito");
+        options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         lp = new LoginPage(driver);
 
