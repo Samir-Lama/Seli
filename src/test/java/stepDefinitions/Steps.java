@@ -20,9 +20,6 @@ public class Steps {
 
     @Given("User launch the chrome browser")
     public void user_launch_the_chrome_browser() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver");
-        driver = new ChromeDriver();
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("−−incognito");
         driver = new ChromeDriver(options);
@@ -32,6 +29,7 @@ public class Steps {
     @When("User opens URL {string}")
     public void user_opens_url(String url) {
         driver.get(url);
+        driver.manage().window().maximize();
     }
 
     @When("User enter Username as {string} and Password as {string}")
