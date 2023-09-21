@@ -14,13 +14,14 @@ public class LoginPage {
         PageFactory.initElements(ldriver, this);
     }
 
-    @FindBy(xpath = "//input[@name='username']")
+    @FindBy(xpath = "//*[@id=\"emailaddress\"]")
     WebElement username; //
 
-    @FindBy(xpath = "//input[@name='password']")
+    @FindBy(xpath = "//*[@id=\"password\"]")
     WebElement passwd;
 
-    @FindBy(xpath = "//button[contains(text(),'Login')]")
+//    @FindBy(xpath = "//button[contains(text(),'Login')]")
+    @FindBy(xpath = "/html/body/div[1]/div/div/div/div/div[2]/form/div[4]/button")
     @CacheLookup
     WebElement btnLogin;
 
@@ -29,6 +30,7 @@ public class LoginPage {
     WebElement btnLogout;
 
     public void setUsername(String username) {
+        System.exit(1);
         this.username.clear();
         this.username.sendKeys(username);
     }

@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import junit.framework.Assert;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -35,13 +36,23 @@ public class Steps {
 
     @When("User enter Username as {string} and Password as {string}")
     public void user_enter_username_as_and_password_as(String username, String password) {
-        lp.setUsername(username);
-        lp.setPassword(password);
+        try {
+            Thread.sleep(4000);
+            lp.setUsername(username);
+            lp.setPassword(password);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @When("Clicks on login")
     public void clicks_on_login() {
-        lp.ClickLogin();
+        try {
+            Thread.sleep(1000);
+            lp.ClickLogin();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Then("User should be on URL {string}")
